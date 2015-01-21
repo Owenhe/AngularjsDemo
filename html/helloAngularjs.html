@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html ng-app="app">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Hello AngularJs</title>
+    <script src="../js/angular.js"></script>
+    <script>
+        var app = angular.module("app", [])
+        //contorller
+        app.controller("testCtrl", function ($scope) {
+            //model
+            $scope.yourName = "world";
+        });
+
+        //定义contorller方法二
+        /*  function testCtrl($scope) {
+         $scope.yourName = "world";
+         $scope.clearInputValue = function () {
+         $scope.yourName = "";
+         }
+         }*/
+    </script>
+</head>
+<body>
+<div ng-controller="testCtrl">
+    <label>Name:</label>
+    <input type="text" ng-model="yourName" placeholder="Enter a name here">
+    <button ng-click="clearInputValue()">Clear Input Value</button>
+    <hr>
+    <h1>Hello {{yourName}}!</h1>
+    <hr/>
+    1+2={{1+2}}
+    <hr>
+
+</div>
+</body>
+</html>

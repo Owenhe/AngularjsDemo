@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html ng-app="app">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>AngularJs Repeat</title>
+    <script src="../js/angular.js"></script>
+    <script>
+        var app = angular.module("app", [])
+        //contorller
+        app.controller("PhoneListCtrl", function ($scope) {
+            //model
+            $scope.phones = [
+                {"name": "Nexus S",
+                    "snippet": "Fast just got faster with Nexus S."},
+                {"name": "Motorola XOOM™ with Wi-Fi",
+                    "snippet": "The Next, Next Generation tablet."},
+                {"name": "MOTOROLA XOOM™",
+                    "snippet": "The Next, Next Generation tablet."}
+            ];
+        });
+    </script>
+</head>
+<body>
+<div ng-controller="PhoneListCtrl">
+    <label>Pohne Info:</label>
+    <hr>
+    <ul>
+        <li ng-repeat="phone in phones">
+            {{phone.name}}
+            <p>{{phone.snippet}}</p>
+        </li>
+    </ul>
+
+</div>
+</body>
+</html>

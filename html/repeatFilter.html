@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html ng-app="app">
+<head lang="en">
+    <meta   charset="UTF-8">
+    <title>AngularJs Repeat Filter</title>
+    <script type="text/javascript" src="../js/angular.js"></script>
+    <script type="text/javascript">
+        var app = angular.module("app", []);
+        //contorller
+        app.controller("PhoneListCtrl", function ($scope) {
+            //model
+            $scope.phones = [
+                {
+                    "name": "Nexus S",
+                    "snippet": "Fast just got faster with Nexus S.",
+                    "age":0
+                },
+                {
+                    "name": "Motorola XOOM™ with Wi-Fi",
+                    "snippet": "The Next, Next Generation tablet.",
+                    "age":1
+                },
+                {
+                    "name": "MOTOROLA XOOM™",
+                    "snippet": "The Next, Next Generation tablet.",
+                    "age":2
+                }
+            ];
+            $scope.orderProp = 'age';
+        });
+    </script>
+</head>
+<body>
+<div ng-controller="PhoneListCtrl">
+    <!--Filter the phone info.-->
+    <label>Search:</label><input type="text"  ng-model="search"/><br>
+    <label>Query Value:{{search}}</label><br>
+    <label>Query Value:</label><span ng-bind="search"></span><br>
+    <label>Sort by:</label>
+    <select  ng-model="orderProp">
+        <option value="name">Alphabetical</option>
+        <option value="age">Newest</option>
+    </select>
+
+    <hr>
+    <ul>
+        <li ng-repeat="phone in phones | filter:search | orderBy:orderProp">
+            {{phone.name}}
+            <p>{{phone.snippet}}</p>
+        </li>
+    </ul>
+
+</div>
+</body>
+</html>
